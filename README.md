@@ -1,7 +1,4 @@
-anguilaperro
+AnguilaPerro Project 
 ============
 
-AnguilaPerro Project 
-
-
-@author Tamara Civera
+Esto es Readme Principal
