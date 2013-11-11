@@ -12,6 +12,9 @@ class Controllers_Errors
 	}
 
 	public function errorAction($request)
+
+	
+	public function indexAction($viewparams)
 	{
 		$this->content=renderView($this->request,$viewparams);
 	}
@@ -21,4 +24,6 @@ class Controllers_Errors
 		$layoutparams=array('content'=>$this->content);
 		echo renderLayout('backend', $layoutparams);
 	}
+
 }
+

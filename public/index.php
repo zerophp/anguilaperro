@@ -19,6 +19,7 @@ $config=readConfigFile($config_file, APPLICATION_ENV);
 
 $request=getRequest();
 
+<<<<<<< HEAD
 switch ($request['controller'])
 {
 	
@@ -30,9 +31,29 @@ switch ($request['controller'])
 	case 'backend':
 		$controller = new Controllers_Backend($request);
 		$controller->indexAction(array());
+=======
+
+	$controllerName = "Controllers_" . ucfirst($request['controller']); 
+	$controller = new $controllerName($request);
+	$methodName=strtolower($request['action']) . "Action";
+	$controller->$methodName(array());
+/*	
+switch ($request['controller']) {
+   case 'index':
+		$controller = new Controllers_Index($request);
+		$methodName=$request['action'] . "Action";
+		$controller->$methodName(array());
+	break;
+	case 'backend':
+		$controller = new Controllers_Backend($request);
+		$methodName=$request['action'] . "Action";
+		$controller->$methodName(array());
+>>>>>>> 2fa71c001a4099b4d6c1f7bab5603b25f6095926
 	break;
 	case 'users':
-		include_once("../application/controllers/Users.php");
+		$controller = new Controllers_Users($request);
+		$methodName=$request['action'] . "Action";
+		$controller->$methodName(array());
 	break;
 	case 'groups':
 		//include_once("../application/controllers/groupsController.php");
@@ -40,12 +61,19 @@ switch ($request['controller'])
 		$controller->indexAction(array());
 	break;
 	case 'errors':
+<<<<<<< HEAD
 		include_once("../application/controllers/Errors.php");
 	break;
+=======
+		$controller = new Controllers_Errors($request);
+		$methodName=$request['action'] . "Action";
+		$controller->$methodName(array());
+		break;
+>>>>>>> 04bd9bae3387b49bc6ebfa9841b6e60de13989d1
 	
 	default:
 		break;
-}
+}*/
 
 
 

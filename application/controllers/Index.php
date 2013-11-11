@@ -15,7 +15,7 @@ class Controllers_Index
 	{
 		$this->content=renderView($this->request,$viewparams);
 	}
-	
+
 	public function aboutAction($viewparams)
 	{
 		$this->content=renderView($this->request,$viewparams);
@@ -31,4 +31,6 @@ class Controllers_Index
 		$layoutparams=array('content'=>$this->content);
 		echo renderLayout('frontend', $layoutparams);
 	}
+
 }
+
