@@ -61,10 +61,15 @@ switch ($request['controller']) {
 		$controller->indexAction(array());
 	break;
 	case 'errors':
+<<<<<<< HEAD
+		include_once("../application/controllers/Errors.php");
+	break;
+=======
 		$controller = new Controllers_Errors($request);
 		$methodName=$request['action'] . "Action";
 		$controller->$methodName(array());
 		break;
+>>>>>>> 04bd9bae3387b49bc6ebfa9841b6e60de13989d1
 	
 	default:
 		break;
