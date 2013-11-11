@@ -19,14 +19,14 @@
   </head>
 
   <body>
-  <?php include ("/partials/navbar.phtml");?>
+  <?php include ("/partials/backend/navbar.phtml");?>
     <div class="container">
       <div class="row row-offcanvas row-offcanvas-right">
         <div class="col-xs-12 col-sm-9">
           <p class="pull-right visible-xs">
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
           </p>
-          <?php include ("/partials/jumbotron.phtml"); ?>          
+          <?php include ("/partials/backend/jumbotron.phtml"); ?>          
           <div class="row">
           	<?php 
           	echo $content;
@@ -34,11 +34,11 @@
           	?>            
           </div><!--/row-->
         </div><!--/span-->
-		<?php include("/partials/menu.phtml");?>
+		<?php include("/partials/backend/menu.phtml");?>
         
       </div><!--/row-->
       <hr>
-		<?php include ("/partials/footer.phtml");?>
+		<?php include ("/partials/backend/footer.phtml");?>
     </div><!--/.container-->
 
     <!-- Bootstrap core JavaScript
