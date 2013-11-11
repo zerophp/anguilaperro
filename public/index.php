@@ -9,7 +9,7 @@ define('APPLICATION_ENV',
 $config_file="../application/configs/config.ini";
 require_once ("../application/autoload.php");
 
-$boostrap = new Boostrap($config);
+$boostrap = new Boostrap($config_file);
 $boostrap->run();
 
 
