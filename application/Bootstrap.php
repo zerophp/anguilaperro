@@ -2,14 +2,16 @@
 
 class Bootstrap
 {
+
 	private $linkRead;
 	private $linkWrite;
 	private $config;	
+	private $session;
 	
-	public function __construct($config_file)
+	public function __construct($config)
 	{		
 		require_once ("../application/model/generalModel.php");
-		$this->config=readConfigFile($config_file, APPLICATION_ENV);		
+		$this->config=readConfigFile($config, APPLICATION_ENV);		
 		$request=getRequest();
 		$this->_configApp();
 	}
@@ -26,7 +28,13 @@ class Bootstrap
 
 	protected function _session()
 	{
-		
+		$a = session_id();
+		if(empty($a)) session_start();
+		$this->$session = $a;
+	}
+	
+	public function getSessionId(){
+		return $this->$session;
 	}
 	
 	protected function _db()
