@@ -1,22 +1,36 @@
 <?php
 
-switch($request['action'])
+class Controllers_Index
 {
-	case 'index':
-		$viewparams=array();
-		$content=renderView($request,$viewparams);
-	break;
+
+	public $content;
+	public $request;
+
+	public function __construct($request)
+	{
+		$this->request=$request;
+	}
+
+	public function indexAction($viewparams)
+	{
+		$this->content=renderView($this->request,$viewparams);
+	}
+
+	public function aboutAction($viewparams)
+	{
+		$this->content=renderView($this->request,$viewparams);
+	}
 	
-	case 'about':
-		$viewparams=array();
-		$content=renderView($request,$viewparams);
-	break;
-		
-	case 'contact':
-		$viewparams=array();
-		$content=renderView($request,$viewparams);
-	break;
+	public function contactAction($viewparams)
+	{
+		$this->content=renderView($this->request,$viewparams);
+	}
+
+	public function __destruct()
+	{
+		$layoutparams=array('content'=>$this->content);
+		echo renderLayout('frontend', $layoutparams);
+	}
+
 }
 
-$layoutparams=array('content'=>$content);
-echo renderLayout('frontend', $layoutparams);
