@@ -11,7 +11,10 @@ class Controllers_Errors
 		$this->request=$request;
 	}
 
-	public function errorAction($request)
+	public function errorAction($viewparams)
+	{
+		$this->content=renderView($this->request,$viewparams);
+	}
 
 	
 	public function indexAction($viewparams)
