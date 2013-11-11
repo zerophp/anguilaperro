@@ -2,6 +2,7 @@
 
 class Bootstrap
 {
+	private $session;
 	public function __construct($config)
 	{		
 		require_once ("../application/model/generalModel.php");
@@ -23,7 +24,13 @@ class Bootstrap
 	
 	protected function _session()
 	{
-		
+		$a = session_id();
+		if(empty($a)) session_start();
+		$this->$session = $a;
+	}
+	
+	public function getSessionId(){
+		return $this->$session;
 	}
 	
 	protected function _db()
