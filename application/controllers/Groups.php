@@ -1,6 +1,5 @@
 <?php
 
-
 class Controllers_Groups
 {
 
@@ -17,22 +16,9 @@ class Controllers_Groups
 		$this->content=renderView($this->request,$viewparams);
 	}
 	
-
 	public function __destruct()
 	{
 		$layoutparams=array('content'=>$this->content);
 		echo renderLayout('backend', $layoutparams);
-	}
-	
-	
+	}	
 }
-
-
-
-
-
-
-
-
-
-
