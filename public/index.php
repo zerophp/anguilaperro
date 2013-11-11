@@ -42,6 +42,11 @@ switch ($request['controller'])
 		$controller = new Controllers_Groups($request);		
 		$controller->indexAction(array());
 	break;
+	case 'errors':
+		$controller = new Controllers_Errors($request);
+		$methodName=$request['action'] . "Action";
+		$controller->$methodName(array());
+		break;
 	
 	default:
 		break;
