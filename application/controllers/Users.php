@@ -3,20 +3,22 @@
 switch($request['action'])
 {
 	case 'index':
+	case 'login':
 		$viewparams=array();
 		$content=renderView($request,$viewparams);
 	break;
 	
-	case 'about':
+	case 'logout':
 		$viewparams=array();
 		$content=renderView($request,$viewparams);
 	break;
-		
-	case 'contact':
+	
+	case 'register':
 		$viewparams=array();
 		$content=renderView($request,$viewparams);
 	break;
+	
 }
 
 $layoutparams=array('content'=>$content);
-echo renderLayout('backend', $layoutparams);
+echo renderLayout('login', $layoutparams);
