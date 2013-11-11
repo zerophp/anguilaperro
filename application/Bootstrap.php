@@ -14,14 +14,21 @@ class Bootstrap
 	{		
 		
 		require_once ("/model/generalModel.php");
-		$config=readConfigFile($config_file, APPLICATION_ENV);		
-		$this->request=getRequest();
+		$this->config=readConfigFile($config_file, APPLICATION_ENV);			
 		$this->_configApp();
+	}
+	
+	protected function _configApp()
+	{
+		$this->_request();
+		$this->_router();
+		$this->_session();
+		$this->_db();
 	}
 	
 	protected function _request()
 	{
-		
+		$this->request=getRequest();
 	}
 	
 	protected function _router()
@@ -32,7 +39,8 @@ class Bootstrap
 	protected function _session()
 	{
 		$a = session_id();
-		if(empty($a)) session_start();
+		if(empty($a)) 
+			session_start();
 		$this->session = $a;
 	}
 	
@@ -46,14 +54,6 @@ class Bootstrap
 		mysqli_select_db($this->linkRead, $this->config['database.db']);
 		$this->linkWrite = mysqli_connect($this->config['database.server'], $this->config['database.username'],$this->config['database.password']);
 		mysqli_select_db($this->linkWrite, $this->config['database.db']);		
-	}
-	
-	protected function _configApp()
-	{
-		$this->_request();
-		$this->_router();
-		$this->_session();
-		$this->_db();
 	}
 	
 	public function _run()
