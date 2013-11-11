@@ -2,18 +2,23 @@
 
 class Bootstrap
 {
+	
+	public $request;
+	
+	
+	
 	public function __construct($config)
 	{		
 		require_once ("../application/model/generalModel.php");
 		$config=readConfigFile($config_file, APPLICATION_ENV);		
-		$request=getRequest();
+	
 		$this->_configApp();
 
 	}
 	
 	protected function _request()
 	{
-		
+		$this->request=getRequest();
 	}
 	
 	protected function _router()
