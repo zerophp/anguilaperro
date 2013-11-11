@@ -23,19 +23,30 @@ switch ($request['controller'])
 {
 	
 	case 'index':
-		include_once("../application/controllers/Index.php");
+		$controller = new Controllers_Index($request);
+		$methodName=$request['action'] . "Action";
+		$controller->$methodName(array());
 	break;
 	case 'backend':
-		include_once("../application/controllers/Backend.php");
+		$controller = new Controllers_Backend($request);
+		$methodName=$request['action'] . "Action";
+		$controller->$methodName(array());
 	break;
 	case 'users':
-		include_once("../application/controllers/Users.php");
+		$controller = new Controllers_Users($request);
+		$methodName=$request['action'] . "Action";
+		$controller->$methodName(array());
 	break;
 	case 'groups':
 		//include_once("../application/controllers/groupsController.php");
 		$controller = new Controllers_Groups($request);		
 		$controller->indexAction(array());
 	break;
+	case 'errors':
+		$controller = new Controllers_Errors($request);
+		$methodName=$request['action'] . "Action";
+		$controller->$methodName(array());
+		break;
 	
 	default:
 		break;
