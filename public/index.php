@@ -19,10 +19,14 @@ $config=readConfigFile($config_file, APPLICATION_ENV);
 
 $request=getRequest();
 
-switch ($request['controller'])
-{
-	
-	case 'index':
+
+	$controllerName = "Controllers_" . ucfirst($request['controller']); 
+	$controller = new $controllerName($request);
+	$methodName=strtolower($request['action']) . "Action";
+	$controller->$methodName(array());
+/*	
+switch ($request['controller']) {
+   case 'index':
 		$controller = new Controllers_Index($request);
 		$methodName=$request['action'] . "Action";
 		$controller->$methodName(array());
@@ -50,7 +54,7 @@ switch ($request['controller'])
 	
 	default:
 		break;
-}
+}*/
 
 
 
