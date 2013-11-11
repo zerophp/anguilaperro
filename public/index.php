@@ -28,7 +28,9 @@ switch ($request['controller'])
 		$controller->$methodName(array());
 	break;
 	case 'backend':
-		include_once("../application/controllers/Backend.php");
+		$controller = new Controllers_Backend($request);
+		$methodName=$request['action'] . "Action";
+		$controller->$methodName(array());
 	break;
 	case 'users':
 		$controller = new Controllers_Users($request);
