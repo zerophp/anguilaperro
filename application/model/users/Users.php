@@ -1,17 +1,21 @@
 <?php
 
-class Model_Users extends Users_Tablegat eway
+class Model_Users
 {
+	public $adapter;
+	protected $model = 'Users';
+	protected $modelInstance;
+	
 	public function __construct()
 	{
-		$adapter = $_SESSION['register']['adapter'];
-		instanciar adaptador
-		users_$adapter implements UsersGateway
+		
+		$this->adapter = $_SESSION['register']['adapter'];
+		$modelInstance = new $this->model.$this->adapter;
 	}
 	
 	public function getUsers()
 	{
-		$u = new users_adapter()
-		$u->getUsers();
+		$this->modelInstance
+			 ->readUsers();
 	}
 }
