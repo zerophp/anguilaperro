@@ -33,11 +33,11 @@ class Bootstrap
 	{
 		$a = session_id();
 		if(empty($a)) session_start();
-		$this->$session = $a;
+		$this->session = $a;
 	}
 	
 	public function getSessionId(){
-		return $this->$session;
+		return $this->session;
 	}
 	
 	protected function _db()
