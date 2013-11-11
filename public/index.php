@@ -29,7 +29,9 @@ switch ($request['controller'])
 		include_once("../application/controllers/Backend.php");
 	break;
 	case 'users':
-		include_once("../application/controllers/Users.php");
+		$controller = new Controllers_Users($request);
+		$methodName=$request['action'] . "Action";
+		$controller->$methodName(array());
 	break;
 	case 'groups':
 		//include_once("../application/controllers/groupsController.php");
