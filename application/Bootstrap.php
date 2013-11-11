@@ -2,12 +2,17 @@
 
 class Bootstrap
 {
-	public function __construct($config)
+	
+	public $request;
+	
+	public function __construct($config_file)
 	{		
-		require_once ("../application/model/generalModel.php");
+		
+		require_once ("/model/generalModel.php");
 		$config=readConfigFile($config_file, APPLICATION_ENV);		
-		$request=getRequest();
+		$this->request=getRequest();
 		$this->_configApp();
+		
 
 	}
 	
@@ -42,24 +47,14 @@ class Bootstrap
 	public function _run()
 	{
 		/** New controller logic */
-		$controllerName = "Controllers_" . ucfirst($request['controller']);
-		$controller = new $controllerName($request);
-		$methodName=strtolower($request['action']) . "Action";
+		
+		$controllerName = "Controllers_" . ucfirst($this->request['controller']);
+		$controller = new $controllerName($this->request);
+		$methodName=strtolower($this->request['action']) . "Action";
 		$controller->$methodName(array());
+		
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
