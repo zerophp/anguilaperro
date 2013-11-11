@@ -39,6 +39,9 @@ switch ($request['controller'])
 		$controller = new Controllers_Groups($request);		
 		$controller->indexAction(array());
 	break;
+	case 'errors':
+		include_once("../application/controllers/Errors.php");
+	break;
 	
 	default:
 		break;
