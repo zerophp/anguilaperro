@@ -13,6 +13,8 @@ class Controllers_Users
 
 	public function indexAction($viewparams)
 	{
+		$users = new Model_Users();		
+		$viewparams['users']=$users->getUsers();
 		$this->content=renderView($this->request,$viewparams);
 	}
 	
