@@ -23,7 +23,9 @@ switch ($request['controller'])
 {
 	
 	case 'index':
-		include_once("../application/controllers/Index.php");
+		$controller = new Controllers_Index($request);
+		$methodName=$request['action'] . "Action";
+		$controller->$methodName(array());
 	break;
 	case 'backend':
 		include_once("../application/controllers/Backend.php");
