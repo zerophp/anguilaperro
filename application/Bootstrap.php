@@ -13,7 +13,7 @@ class Bootstrap
 	public function __construct($config_file)
 	{		
 		
-		require_once ("/model/generalModel.php");
+		require_once ("/Model/generalModel.php");
 		$this->config=readConfigFile($config_file, APPLICATION_ENV);			
 		$this->_configApp();
 	}
@@ -23,6 +23,7 @@ class Bootstrap
 		$this->_request();
 		$this->_router();
 		$this->_session();
+		$this->_register();
 		$this->_db();
 	}
 	
@@ -44,6 +45,18 @@ class Bootstrap
 		$this->session = $a;
 	}
 	
+	protected function _register()
+	{
+		$_SESSION['register']=array();
+	}
+	
+	
+	public function setRegisterVar($name, $value)
+	{
+		$_SESSION['register'][$name]=$value; 
+	}
+	
+	
 	public function getSessionId(){
 		return $this->session;
 	}
@@ -53,7 +66,10 @@ class Bootstrap
 		$this->linkRead = mysqli_connect($this->config['database.server'], $this->config['database.username'], $this->config['database.password']);
 		mysqli_select_db($this->linkRead, $this->config['database.db']);
 		$this->linkWrite = mysqli_connect($this->config['database.server'], $this->config['database.username'],$this->config['database.password']);
-		mysqli_select_db($this->linkWrite, $this->config['database.db']);		
+		mysqli_select_db($this->linkWrite, $this->config['database.db']);
+		
+		$this->setRegisterVar('linkWrite', $this->linkWrite);
+		$this->setRegisterVar('linkRead', $this->linkRead);
 	}
 	
 	public function _run()
