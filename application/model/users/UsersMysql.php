@@ -1,6 +1,6 @@
 <?php
 
-class UsersMysql implements UsersGateway
+class Model_Users_UsersMysql implements Model_Interfaces_Users
 {
 	
 	
@@ -8,6 +8,7 @@ class UsersMysql implements UsersGateway
 	
 	public function readUsers()
 	{
+		$users=array();
 		$sql="SELECT * FROM users";
 		$linkRead= $_SESSION['register']['linkRead'];
 		$result=mysqli_query($linkRead,$sql);

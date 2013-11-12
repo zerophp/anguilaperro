@@ -3,19 +3,19 @@
 class Model_Users
 {
 	public $adapter;
-	protected $model = 'Users';
+	protected $model = 'Model_Users_Users';
 	protected $modelInstance;
 	
 	public function __construct()
-	{
-		
+	{	
 		$this->adapter = $_SESSION['register']['adapter'];
-		$modelInstance = new $this->model.$this->adapter;
+		$name=$this->model.$this->adapter;
+		$this->modelInstance = new $name();
 	}
 	
 	public function getUsers()
 	{
-		$this->modelInstance
+		return $this->modelInstance
 			 ->readUsers();
 	}
 }
