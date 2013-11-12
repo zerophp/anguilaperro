@@ -4,3 +4,30 @@ print_r($viewparams);
 echo "</pre>";
 ?>
 <h1>Users Index</h1>
+<a href = "/users/insert">Insertar</a>
+<table class="table table-striped">
+<tr>
+  <th>Id</th>
+  <th>Email</th>
+  <th>Password</th>  
+  <th>Name</th> 
+  <th>User State</th>
+  <th>Options</th>
+</tr>
+<?php foreach($viewparams['users'] as $key => $user):?>
+  <tr>
+    <?php foreach ($user as $value):?>
+      <td><?=$value;?></td>
+    <?php endforeach;?>
+	<td>
+		<a href="/users/insert/id/<?=$user['idusers'];?>">
+			Update
+		</a>
+		&nbsp;
+		<a href="/users/delete/id/<?=$user['idusers'];?>">
+			Delete
+		</a>
+	</td>
+  </tr>
+<?php endforeach;?>    
+</table>
