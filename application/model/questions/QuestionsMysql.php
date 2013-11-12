@@ -5,7 +5,7 @@ class Model_Questions_QuestionsMysql implements Model_Interfaces_Questions
 	
 	public function readQuestions($examId)
 	{
-		$users=array();
+		$questions=array();
 		$sql="SELECT * FROM questions WHERE exam=" . $examId;
 		
 		$linkRead= $_SESSION['register']['linkRead'];

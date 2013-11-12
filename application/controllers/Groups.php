@@ -13,7 +13,12 @@ class Controllers_Groups
 	
 	public function indexAction($viewparams)
 	{		
-		$groups = new Model_Groups();		
+		$groups = new Model_Groups();
+
+		if(isset($this->request['params']['idgroups'])) {
+			$viewparams['group']=$groups->getGroup($this->request['params']['idgroups']);
+		}
+		
 		$viewparams['groups']=$groups->getGroups();
 		$this->content=renderView($this->request,$viewparams);
 	}

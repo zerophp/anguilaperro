@@ -1,25 +1,53 @@
-<h1>HOLA grupos</h1>
+<form name="groups" action="/groups/add">
+<div class="form-horizontal">
+	<div class="form-group">
+		<label for="idgroups" class="col-sm-2 control-label">Identificador</label>
+		<div class="col-sm-2">
+			<input type="text" class="form-control" id="idgroups" name="idgroups" value="<?=isset($viewparams['group']) ? $viewparams['group']['idgroups'] : ''?>" />
+		</div>
+	</div>
+	<div class="form-group">
+    	<label for="name" class="col-sm-2 control-label">Nombre</label>
+    	<div class="col-sm-6">
+			<input type="text" class="form-control" id="name" name="name" value="<?=isset($viewparams['group']) ? $viewparams['group']['name'] : ''?>">
+    	</div>
+  	</div>
+  	<div class="form-group">
+  		<label for="name" class="col-sm-2 control-label">Estado</label>
+  		<div class="col-sm-6">
+  			<input type="text" class="form-control" id="group_state" name="group_state" value="<?=isset($viewparams['group']) ? $viewparams['group']['group_state'] : ''?>" />
+  		</div>
+  	</div>
+</div>
+<div class="text-center">
+	<input type="submit" class="btn btn-default" name="Enviar" />
+</div>
+
+</form>
+
+<br /><br />
+<!-- <pre>
+<?php print_r($request)?>
+<?php print_r($viewparams)?>
+</pre>-->
+
 <?php //print_r ($viewparams);
 
 if (isset ($viewparams['groups']))
 {
 ?>
-        <table border=1>
-                <tr>
-                        <th>Id</th>
-                        <th>Nombre</th>
-                        <th>Estado</th>
-                </tr>
-<?php foreach ($viewparams['groups'] as $grupo)
-        {
-                echo "<tr>
-                        <td>{$grupo['idgroups']}</td>
-                        <td>{$grupo['name']}</td>
-                        <td>{$grupo['group_state']}</td>
-                </tr>";
-        }
-?>
-        </table>
-<?php
-
-}
+	<table class="table table-bordered table-stripped">
+		<tr>
+			<th>Id</th>
+			<th>Nombre</th>
+			<th>Estado</th>
+		</tr>
+<?php foreach ($viewparams['groups'] as $grupo) { ?>
+		<tr>
+			<td><a href="/groups/index/idgroups/<?=$grupo['idgroups']?>"><?=$grupo['idgroups']?></a></td>
+			<td><?=$grupo['name']?></td>
+			<td><?=$grupo['group_state']?></td>
+		</tr>
+<?php } ?>
+	</table>
+<?php } ?>

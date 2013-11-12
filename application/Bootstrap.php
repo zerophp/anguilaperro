@@ -23,8 +23,33 @@ class Bootstrap
 		$this->_request();
 		$this->_router();
 		$this->_session();
+		$this->_smtp();
 		$this->_register();
 		$this->_db();
+	}
+	
+	protected function _smtp()
+	{
+		$config['server']=$this->config['smtp.server'];
+		$config['ssl']=$this->config['smtp.ssl'];
+		$config['port']=$this->config['smtp.port'];
+		$config['auth']=$this->config['smtp.auth'];
+		$config['username']=$this->config['smtp.username'];
+		$config['password']=$this->config['smtp.password'];
+		
+		$transport = new Zend_Mail_Transport_Smtp($config['server'], $config);
+		
+		
+		
+		$mail = new Zend_Mail();
+		$mail->addTo('------@gmail.com', 'Test');
+		
+		$mail->setSubject(
+				'Demonstration - Sending Multiple Mails per SMTP Connection'
+		);
+		$mail->setBodyText('...Your message here...');
+		$mail->send($transport);
+		
 	}
 	
 	protected function _request()
