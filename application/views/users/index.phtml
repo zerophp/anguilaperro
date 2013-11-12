@@ -1,6 +1,28 @@
-<?php 
-echo "<pre>";
-print_r($viewparams);
-echo "</pre>";
-?>
 <h1>Users Index</h1>
+<a href = "/users/insert">Insertar</a>
+<table>
+<tr>
+<th>NOMBRE </th>
+<th>EMAIL </th>
+<th>OPCIONES </th>
+</tr>
+ <?php 
+foreach($viewparams as $value){
+	foreach($value as $user){
+		echo '<tr>';
+		echo '<td>';
+		echo $user['name'];
+		echo '</td>';
+		echo '<td>';
+		echo $user['email'];
+		echo '</td>';
+		echo '<td>';
+		echo '<a href="/users/insert/id/'.$user['idusers'].'">Update</a>&nbsp;<a href="/users/delete/id/'.$user['idusers'].'">Delete</a>';
+		echo '</td>';
+		echo '</tr>';
+	}
+	
+}
+ ?>
+
+</table>
