@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 class Model_Users_UsersMysql implements Model_Interface_Users
+=======
+class Model_Users_UsersMysql implements Model_Interfaces_Users
+>>>>>>> e7065cad2b3dad4c58754ae9e92461c34d1d1737
 {
 	
 	
@@ -8,7 +12,11 @@ class Model_Users_UsersMysql implements Model_Interface_Users
 	
 	public function readUsers()
 	{
+<<<<<<< HEAD
 
+=======
+		$users=array();
+>>>>>>> e7065cad2b3dad4c58754ae9e92461c34d1d1737
 		$sql="SELECT * FROM users";
 		$linkRead= $_SESSION['register']['linkRead'];
 		$result=mysqli_query($linkRead,$sql);
