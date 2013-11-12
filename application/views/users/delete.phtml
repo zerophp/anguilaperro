@@ -1,0 +1,20 @@
+<form method="post">
+<ul>
+	<input type="hidden" name="id" value="<?=(isset($viewparams['users']['idusers']))?$viewparams['users']['idusers']:'';?>"/>
+	<li>
+		Nombre: <?=(isset($viewparams['users']['name']))?$viewparams['users']['name']:'';?>
+	</li>
+	<li>
+		Seguro que desea borrar el usuario
+	</li>	
+	<li>
+		Si: <input type="submit" name="borrar" value="Si" />
+		No: <input type="submit" name="borrar" value="No" />
+	</li>
+	
+	
+</ul>
+
+
+
+</form>
