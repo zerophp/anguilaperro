@@ -1,0 +1,23 @@
+<a href = "/users">Volver</a>
+<form method="post">
+<ul>
+	<li>
+		Id: <input type="hidden" name="id" value="<?=(isset($viewparams['users']['idusers']))?$viewparams['users']['idusers']:'';?>"/>
+	</li>
+	<li>
+		Nombre: <input type="text" name="name" value="<?=(isset($viewparams['users']['name']))?$viewparams['users']['name']:'';?>"/>
+	</li>
+	<li>
+		Email: <input type="text" name="email" value="<?=(isset($viewparams['users']['email']))?$viewparams['users']['email']:'';?>"/>
+	</li>
+	<li>
+		Password: <input type="password" name="password"/>
+	</li>
+	<li>
+		Submit: <input type="submit" name="Enviar" />
+	</li>
+</ul>
+
+
+
+</form>

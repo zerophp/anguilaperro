@@ -49,10 +49,14 @@ class Model_Users_UsersMysql implements Model_Interfaces_Users
 		}
 		else
 		{
+			//TODO Tener en cuenta el cambio de password
+// 			echo "<pre>";
+// 			print_r($user);
+// 			echo "</pre>";
+// 			die;
 			$sql = "UPDATE users SET
 				email='".$user['email']."',
-				password='".$user['password']."',
-				name='".$user['name']."',				
+				name='".$user['name']."'				
 			WHERE idusers=".$id;
 			
 			mysqli_query($linkWrite, $sql);
@@ -72,7 +76,7 @@ class Model_Users_UsersMysql implements Model_Interfaces_Users
 		$linkRead= $_SESSION['register']['linkRead'];
 		$result=mysqli_query($linkRead,$sql);
 		
-		$user=mysqli_fetch_array($result);
+		$user=mysqli_fetch_assoc($result);
 		
 		return $user;
 	}
