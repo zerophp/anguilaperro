@@ -1,1 +1,25 @@
 <h1>HOLA grupos</h1>
+<?php //print_r ($viewparams);
+
+if (isset ($viewparams['groups']))
+{
+?>
+        <table border=1>
+                <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Estado</th>
+                </tr>
+<?php foreach ($viewparams['groups'] as $grupo)
+        {
+                echo "<tr>
+                        <td>{$grupo['idgroups']}</td>
+                        <td>{$grupo['name']}</td>
+                        <td>{$grupo['group_state']}</td>
+                </tr>";
+        }
+?>
+        </table>
+<?php
+
+}

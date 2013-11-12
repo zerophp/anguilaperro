@@ -1,10 +1,9 @@
 <?php
 
 
-interface UsersGateway
+interface Model_Interfaces_Users
 {
-	private $user;
-	
+		
 	public function readUsers();
 	public function writeUser($id, $user);
 	public function readUser($id);
