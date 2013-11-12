@@ -1,0 +1,43 @@
+<h1>HOLA exams</h1>
+
+<a href="/exams/insert">Insertar examen</a>
+
+<table border=1>
+<tr>
+<th>Id</th>
+<th>tema</th>
+<th>dificultad</th>
+<th>Opciones</th>
+</tr>
+<?php 
+$exams=$viewparams['exam'];
+foreach ($exams as $key => $exam): 
+?>
+<tr>
+<?php foreach ($exam as $value):?>
+<td>
+<?=$value;?>
+</td>
+<?php endforeach?>
+
+	<td>
+			<a href="/exams/update/line/<?=$key;?>">Update</a>
+				&nbsp;&nbsp;
+			 <a href="/exams/delete/line/<?=$key;?>">Delete</a>
+		</td>
+</tr>
+<?php endforeach?>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+

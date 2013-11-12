@@ -1,5 +1,6 @@
 <?php
 
+
 class Model_Users_UsersMysql implements Model_Interfaces_Users
 {
 	private $user;
@@ -10,6 +11,9 @@ class Model_Users_UsersMysql implements Model_Interfaces_Users
 	*/
 	public function readUsers()
 	{
+
+
+
 		$users=array();
 		$sql="SELECT * FROM users";
 		$linkRead= $_SESSION['register']['linkRead'];

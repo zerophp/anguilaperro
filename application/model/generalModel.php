@@ -13,7 +13,6 @@ function readConfigFile($filename, $state)
 	
 // 	Leer el contenido del fichero .ini en un array
 	$config=parse_ini_file($filename, true);
-	
 // 	recorrar el array
 	foreach($config as $key => $value)
 	{ 
@@ -22,6 +21,10 @@ function readConfigFile($filename, $state)
 // 		si la llavew 1 es igual a state
 		if($array_keys[0]==$state)
 		{
+			echo "<pre>";
+			echo ($config_arra1=$config[$array_keys[1]]);
+			echo "<pre/>";
+			
 			$config_arra1=$config[$array_keys[1]];
 			$config_arra2=$config[$key];
 			break;
