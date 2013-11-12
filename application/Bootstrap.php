@@ -40,15 +40,16 @@ class Bootstrap
 		$transport = new Zend_Mail_Transport_Smtp($config['server'], $config);
 		
 		
+		// TODO: uncomment to send emails
+		// TODO: remove from bootstrap
+// 		$mail = new Zend_Mail();
+// 		$mail->addTo('------@gmail.com', 'Test');
 		
-		$mail = new Zend_Mail();
-		$mail->addTo('------@gmail.com', 'Test');
-		
-		$mail->setSubject(
-				'Demonstration - Sending Multiple Mails per SMTP Connection'
-		);
-		$mail->setBodyText('...Your message here...');
-		$mail->send($transport);
+// 		$mail->setSubject(
+// 				'Demonstration - Sending Multiple Mails per SMTP Connection'
+// 		);
+// 		$mail->setBodyText('...Your message here...');
+// 		$mail->send($transport);
 		
 	}
 	
