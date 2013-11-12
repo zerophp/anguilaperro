@@ -1,28 +1,27 @@
 <?php
 
-class Controllers_Index
+class Controllers_Author
 {
 
 	public $content;
 	public $request;
-	protected $layout = 'frontend';
 
 	public function __construct($request)
 	{
 		$this->request=$request;
 	}
 
-	public function indexAction($viewparams)
-	{
-		$this->content=renderView($this->request,$viewparams);
-	}
-
-	public function aboutAction($viewparams)
+	public function loginAction($viewparams)
 	{
 		$this->content=renderView($this->request,$viewparams);
 	}
 	
-	public function contactAction($viewparams)
+	public function logoutAction($viewparams)
+	{
+		$this->content=renderView($this->request,$viewparams);
+	}
+	
+	public function registerAction($viewparams)
 	{
 		$this->content=renderView($this->request,$viewparams);
 	}
@@ -30,8 +29,6 @@ class Controllers_Index
 	public function __destruct()
 	{
 		$layoutparams=array('content'=>$this->content);
-		echo renderLayout($this->layout, $layoutparams);
+		echo renderLayout('login', $layoutparams);
 	}
-
 }
-

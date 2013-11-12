@@ -13,27 +13,16 @@ class Controllers_Users
 
 	public function indexAction($viewparams)
 	{
+		$users = new Model_Users();		
+		$viewparams['users']=$users->getUsers();
 		$this->content=renderView($this->request,$viewparams);
 	}
 	
-	public function loginAction($viewparams)
-	{
-		$this->content=renderView($this->request,$viewparams);
-	}
-	
-	public function logoutAction($viewparams)
-	{
-		$this->content=renderView($this->request,$viewparams);
-	}
-	
-	public function registerAction($viewparams)
-	{
-		$this->content=renderView($this->request,$viewparams);
-	}
-
 	public function __destruct()
 	{
 		$layoutparams=array('content'=>$this->content);
-		echo renderLayout('login', $layoutparams);
+		echo renderLayout('backend', $layoutparams);
 	}
+	
+
 }

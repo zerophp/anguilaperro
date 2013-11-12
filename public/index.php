@@ -9,6 +9,6 @@ define('APPLICATION_ENV',
 $config_file="../application/configs/config.ini";
 require_once ("../application/autoload.php");
 
-$bootstrap = new Bootstrap($config_file);
-$bootstrap->_run();
 
+$boostrap = new Bootstrap($config_file);
+$boostrap->_run();
