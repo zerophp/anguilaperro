@@ -1,1 +1,17 @@
-<h1>Users Index</h1>
+<table class="table table-striped">
+<tr>
+	<th>Id</th>
+	<th>Name</th>	
+	<th>Email</th>
+	<th>Password</th>	
+	<th>User State</th>
+</tr>
+<?php foreach($viewparams['users'] as $key => $user):?>
+	<tr>
+		<?php foreach ($user as $value):?>
+			<td><?=$value;?></td>
+		<?php endforeach;?>
+
+	</tr>
+<?php endforeach;?>	  
+</table>
