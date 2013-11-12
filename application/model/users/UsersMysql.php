@@ -2,8 +2,6 @@
 
 class Model_Users_UsersMysql implements Model_Interfaces_Users
 {
-	
-	
 	private $user;
 	
 	/**
@@ -93,4 +91,5 @@ class Model_Users_UsersMysql implements Model_Interfaces_Users
 		
 		return;
 	}
+
 }

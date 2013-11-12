@@ -1,0 +1,19 @@
+@CHARSET "ISO-8859-1";
+/*!
+	CSS de la parte de preguntas
+/*! normalize.css v2.1.3 | MIT License | git.io/normalize */
+
+.ta{
+	width:60%;
+	
+}
+
+#cajapreg{
+	float:left;
+
+}
+
+#opciones{
+	float:right;
+
+}

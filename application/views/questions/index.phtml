@@ -1,0 +1,19 @@
+<a href="/questions/create/exam/<?=$viewparams['examID'];?>" class="btn btn-primary">Crear pregunta</a>
+<br />
+<table class="table table-striped">
+<tr>
+	<th>Id</th>
+	<th>Description</th>	
+	<th>Difficulty</th>
+	<th>Type</th>	
+	<th>Exam</th>
+</tr>
+<?php foreach($viewparams['questions'] as $key => $question):?>
+	<tr>
+		<?php foreach ($question as $value):?>
+			<td><?=$value;?></td>
+		<?php endforeach;?>
+
+	</tr>
+<?php endforeach;?>	  
+</table>
