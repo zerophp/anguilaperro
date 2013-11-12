@@ -8,53 +8,64 @@ class UsersMysql implements UsersGateway
 	
 	public function readUsers()
 	{
+
+		$sql="SELECT * FROM users";
+		$linkRead= $_SESSION['register']['linkRead'];
+		$result=mysqli_query($linkRead,$sql);
 		
-		
-		
-		//conection:
-		$link = mysqli_connect("myhost","root","","anguilaperro") or die("Error " . mysqli_error($link));
-		
-		//consultation:
-		
-		$query = "SELECT idusers FROM anguilaperro.users" or die("Error in the consult.." . mysqli_error($link));
-		
-		//execute the query.
-		
-		$user = $link->query($query);
-		
-		//display information:
-		
-		while($row = mysqli_fecth_array($user)) {
-			echo $row["idusers"] . "<br>";
+		while($row=mysqli_fetch_assoc($result))
+		{
+			$users[]=$row;
 		}
 		
+		return $users;
 	}
-	
-	public function writeUser($id, $user) {
+	public function writeUser($user, $id = "")
+	{
+		$linkWrite= $_SESSION['register']['linkWrite'];
 		
-		foreach($user as $key => $value)
+		if(empty($id))
 		{
-			if($key==$user[$id])
-			{
-				///Escribimos en el interior del array.
-			}
+			$sql = "INSERT INTO users SET
+					email='".$user['email']."',
+					password='".$user['password']."',
+					name='".$user['name']."',
+					user_state= 2";
 			
-		}	
+			mysqli_query($linkWrite, $sql);
+			
+			return mysqli_insert_id();
+		}
+		else
+		{
+			$sql = "UPDATE users SET
+				email='".$user['email']."',
+				password='".$user['password']."',
+				name='".$user['name']."',				
+			WHERE idusers=".$id;
+			
+			mysqli_query($linkWrite, $sql);
+			
+			return;
+		}
 	}
-	
 	public function readUser($id)
 	{
-		return $user($id);	
+		$sql="SELECT * FROM users WHERE idusers=".$id;
+		$linkRead= $_SESSION['register']['linkRead'];
+		$result=mysqli_query($linkRead,$sql);
+		
+		$user=mysqli_fetch_array($result);
+		
+		return $user;
 	}
-	
-	
-	
-	public function removeUser($id){
-		echo(var_dump($user));
-		unset($user($id));
-		echo(var_dump($user));
+	public function removeUser($id)
+	{
+		$sql = "DELETE FROM users WHERE idusers = " . $id;
+		$linkWrite= $_SESSION['register']['linkWrite'];
+		mysqli_query($linkWrite, $sql);
+		
 		return;
 	}
-		
-	
+
 }
