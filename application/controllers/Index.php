@@ -5,6 +5,7 @@ class Controllers_Index
 
 	public $content;
 	public $request;
+	protected $layout = 'frontend';
 
 	public function __construct($request)
 	{
@@ -29,7 +30,7 @@ class Controllers_Index
 	public function __destruct()
 	{
 		$layoutparams=array('content'=>$this->content);
-		echo renderLayout('frontend', $layoutparams);
+		echo renderLayout($this->layout, $layoutparams);
 	}
 
 }

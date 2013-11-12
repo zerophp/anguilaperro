@@ -48,6 +48,7 @@ class Bootstrap
 	protected function _register()
 	{
 		$_SESSION['register']=array();
+		$_SESSION['register']['adapter']=$this->config['adapter'];
 	}
 	
 	
