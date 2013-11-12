@@ -1,0 +1,62 @@
+<form method="post">
+<fieldset>
+<legend>Insertar Pregunta</legend>
+<textarea name="description" rows="30" class="ta"></textarea>
+ 
+<div id="opciones" style="float:right;">
+<label class="control-label" for="tipopreg">Tipo de Pregunta</label>
+<select name="type">
+<option value="1">Unica</option>
+<option value="2">Multiple</option>
+<option value="3">Texto</option>
+</select>
+ 
+<label class="control-label" for="dificultad">Dificultad</label>
+<select name="difficulty">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+</select>
+
+<div class="control-group">
+<label class="control-label" for="answ1">Respuesta1</label>
+<div class="controls">
+<input type="text" name="answ1" placeholder="Respuesta1" />
+</div>
+<label class="control-label" for="answ2">Respuesta2</label>
+<div class="controls">
+<input type="text" name="answ2" placeholder="Respuesta2" />
+</div>
+<label class="control-label" for="answ3">Respuesta3</label>
+<div class="controls">
+<input type="text" name="answ3" placeholder="Respuesta3" />
+</div>
+<label class="control-label" for="answ4">Respuesta4</label>
+<div class="controls">
+<input type="text" name="answ4" placeholder="Respuesta4" />
+</div>
+<label class="control-label" for="answ5">Respuesta5</label>
+<div class="controls">
+<input type="text" name="answ5" placeholder="Respuesta5" />
+</div>
+<br/><br/><br/><br/><br/><br/><br/>
+<label class="control-label" for="rightansw">Respuesta Correcta</label>
+<div class="controls">
+<input type="text" name="rightansw" placeholder="Valores separados por comas">
+</div>
+
+<div class="form-actions">
+<input type="submit" class="btn btn-primary" value="Guardar"></input>
+
+<a href="/questions/index/exam/<?=$viewparams['examID'];?>" class="btn btn-primary">Cancelar</a>
+
+</div>
+</div>
+
+</div>
+
+
+</fieldset>
+</form>
+
+
