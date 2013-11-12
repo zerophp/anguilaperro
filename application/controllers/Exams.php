@@ -20,8 +20,29 @@ class Controllers_Exams
 	
 	public function insertAction($viewparams)
 	{
+	if($_POST){
+			$exam = array();
+			$exam['topic'] = $_POST['topic'];
+			$exam['difficulty'] = $_POST['difficulty'];
+			if(empty($_POST['id'])){
+				$viewparams['exam']=$exam->insertExam($exam);
+			}else{
+				echo($_POST['id']);
+				echo (var_dump($exam)) ;
+				die();
+				$viewparams['exam']=$exam->updateExam($exam,$_POST['id']);
+			}
+			header("Location: /exam");
+		}
+		if(isset($request['params']['id'])){
+			$id = $request['params']['id'];
+			$viewparams['exam']=$exam->getExam($id);
+		}else{
+			$viewparams = array();
+		}
+		
+		
 		$exam = new Model_Exam();
-		$viewparams['exam']=$exam->writeExam($exam);
 		$this->content=renderView($this->request,$viewparams);
 	}
 

@@ -17,4 +17,19 @@ class Model_Exam
 		return $this->modelInstance
 		->readExams();
 	}
+	
+	public function insertExam($exam)
+	{
+		return $this->modelInstance
+		->writeExams($exam);
+	}
+	
+	public function updateExam($exam,$id)
+	{
+		echo($exam);
+		echo($id);
+		die();
+		return $this->modelInstance
+		->writeExams($exam,$id);
+	}
 }
