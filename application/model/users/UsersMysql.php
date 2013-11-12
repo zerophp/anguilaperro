@@ -1,6 +1,6 @@
 <?php
 
-class UsersMysql implements UsersGateway
+class Model_Users_UsersMysql implements Model_Interface_Users
 {
 	
 	
