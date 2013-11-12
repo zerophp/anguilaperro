@@ -18,4 +18,28 @@ class Model_Users
 		return $this->modelInstance
 			 ->readUsers();
 	}
+	
+	public function getUser($id)
+	{
+		return $this->modelInstance
+		->readUser($id);
+	}
+	
+	public function updateUser($user,$id)
+	{
+		return $this->modelInstance
+		->writeUser($user,$id);
+	}
+	
+	public function insertUser($user)
+	{
+		return $this->modelInstance
+		->writeUser($user);
+	}
+	
+	public function deleteUser($id)
+	{
+		return $this->modelInstance
+		->removeUser($id);
+	}
 }
