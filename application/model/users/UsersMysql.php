@@ -35,30 +35,36 @@ class Model_Users_UsersMysql implements Model_Interfaces_Users
 		
 		if(empty($id))
 		{
+// 			$sql = "INSERT INTO users SET
+// 					email='".$user['email']."',
+// 					password='".$user['password']."',
+// 					name='".$user['name']."',
+// 				 	display_name='".$user['display_name']."',
+// 				 	token = null,
+// 				 	timestamp = null,
+// 					user_state= 2";
+
 			$sql = "INSERT INTO users SET
-					email='".$user['email']."',
-					password='".$user['password']."',
-					name='".$user['name']."',
+					email='".$user->getEmail()."',
+					password='".$user->getPassword()."',
+					name='".$user->getName()."',
+				 	display_name='".$user->getDisplay_name()."',
+				 	token = '".$user->getToken()."',
+				 	timestamp = '".$user->getTimestamp()."',
 					user_state= 2";
+			
 			
 			mysqli_query($linkWrite, $sql);
 			
-			return mysqli_insert_id();
+			return;
 		}
 		else
 		{
-			//TODO Tener en cuenta el cambio de password
-// 			echo "<pre>";
-// 			print_r($user);
-// 			echo "</pre>";
-// 			die;
 			$sql = "UPDATE users SET
 				email='".$user['email']."',
-<<<<<<< HEAD
 				password='".$user['password']."',
-=======
->>>>>>> a417658a40ef11d5c9c2984452133dfbfbccfa71
-				name='".$user['name']."'				
+				name='".$user['name']."',
+				display_name='".$user['display_name']."'				
 			WHERE idusers=".$id;
 			
 			mysqli_query($linkWrite, $sql);
@@ -94,6 +100,14 @@ class Model_Users_UsersMysql implements Model_Interfaces_Users
 		mysqli_query($linkWrite, $sql);
 		
 		return;
+	}
+	
+	public function verifyUser($email,$token){
+		$sql = "SELECT timestamp, idusers FROM users WHERE email = '".$email."' AND token = '".$token."'";
+		$linkRead= $_SESSION['register']['linkRead'];
+		$result=mysqli_query($linkRead,$sql);
+		echo $sql;
+		return mysqli_fetch_object($result);
 	}
 
 }

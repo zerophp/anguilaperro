@@ -42,4 +42,8 @@ class Model_Users
 		return $this->modelInstance
 		->removeUser($id);
 	}
+	
+	public function verifyUser($email,$token){
+		return $this->modelInstance->verifyUser($email,$token);
+	}
 }
