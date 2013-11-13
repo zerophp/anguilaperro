@@ -1,0 +1,14 @@
+<form method="post">
+<div class="controls">
+	<input type="hidden" name="id" value="<?=(isset($viewparams['exams']['idexams']))?$viewparams['exams']['idexams']:'';?>"/>
+</div>
+
+<div class="controls">
+	Are you sure you want to clear the exam:  <?=(isset($viewparams['exams']['topic']))?$viewparams['exams']['topic']:'';?>
+</div>
+<div class="form-actions">
+ 	<input type="submit" class="btn btn-primary" name="borrar" value="Si"></input>
+ 	<input type="submit" class="btn btn-primary" name="borrar" value="No"></input>
+</div>
+
+</form>
