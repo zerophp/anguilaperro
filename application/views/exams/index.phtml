@@ -1,0 +1,31 @@
+<a href="/exams/insert" class="btn btn-primary">Crear examen</a>
+<br />
+
+<table class="table table-striped">
+<tr>
+	<th>Id</th>
+	<th>Topic</th>	
+	<th>Difficulty</th>
+	<th>Options</th>
+</tr>
+<?php foreach($viewparams['exams'] as $key => $exam):?>
+	<tr>
+		<?php foreach ($exam as $value):?>
+			<td><?=$value;?></td>
+		<?php endforeach;?>
+		
+		<td>
+	
+
+		<a href="/exams/insert/id/<?=$exam['idexams'];?>">
+			Update
+		</a>
+		&nbsp;
+		<a href="/exams/delete/id/<?=$exam['idexams'];?>">
+			Delete
+		</a>
+	</td>
+	
+	</tr>
+<?php endforeach;?>	  
+</table>
