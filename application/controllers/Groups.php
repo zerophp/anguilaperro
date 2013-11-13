@@ -25,16 +25,24 @@ class Controllers_Groups
 	
 	public function addGroupAction($viewparams)
 	{
-		$this->content=renderView($this->request,$viewparams);
+		
+		$request = $this->request;
+		$groups = new Model_Groups();
+		if($_POST){
+			$group = array();
+			$group['idgroups'] = $_POST['idgroups'];
+			$group['name'] = $_POST['name'];
+			$group['group_state'] = $_POST['group_state'];
+			
+			if(empty($_POST['idgroups'])){
+				$viewparams['group']=$groups->insertGroup($group);
+			}else{
+				$viewparams['group']=$groups->updateGroup($group,$_POST['idgroups']);
+			}
+		}
+		header("Location: /groups");
 	}
-	
-	public function addAction($viewparams)
-	{
-		$viewparams['textGrupo']='probando el addaction grupos';
-		$this->request['action']='index';
-		$this->content=renderView($this->request,$viewparams);
-	}
-	
+		
 	
 	public function __destruct()
 	{

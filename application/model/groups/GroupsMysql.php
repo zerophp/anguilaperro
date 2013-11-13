@@ -28,7 +28,7 @@ class Model_Groups_GroupsMysql implements Model_Interfaces_Groups
 		{
 			$sql = "INSERT INTO groups SET
 					name='".$group['name']."',
-					group_state= 2";
+					group_state= ".$group['group_state'];
 			
 			mysqli_query($linkWrite, $sql);
 			
@@ -37,8 +37,8 @@ class Model_Groups_GroupsMysql implements Model_Interfaces_Groups
 		else
 		{
 			$sql = "UPDATE groups SET
-				name='".$group['name']."',				
-			WHERE idgroups=".$id;
+				name='".$group['name']."',
+				group_state= ".$group['group_state']." WHERE idgroups=".$id;
 			
 			mysqli_query($linkWrite, $sql);
 			
