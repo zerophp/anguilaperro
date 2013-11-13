@@ -23,7 +23,7 @@ class Bootstrap
 		$this->_request();
 		$this->_router();
 		$this->_session();
-		$this->_smtp();
+		//$this->_smtp();
 		$this->_register();
 		$this->_db();
 	}
