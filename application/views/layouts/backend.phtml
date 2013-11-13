@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="/favicon.png">
-
+	<link href="/css/questions.css" rel="stylesheet">
     <title>AnguilaPerro Project</title>
 
     <!-- Bootstrap core CSS -->
@@ -26,7 +26,10 @@
           <p class="pull-right visible-xs">
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
           </p>
-          <?php include ("/partials/backend/jumbotron.phtml"); ?>          
+          <?php if($layoutparams['request']['controller']=='dashboard' && 
+          			$layoutparams['request']['action']=='index'):?>
+                <?php include ("/partials/backend/jumbotron.phtml"); ?>          
+          <?php endif;?>                      
           <div class="row">
           	<?php 
           	echo $content;

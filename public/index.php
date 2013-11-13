@@ -6,29 +6,13 @@ define('APPLICATION_ENV',
 		(getenv('APPLICATION_ENV') ?
 				getenv('APPLICATION_ENV') : 'production'));
 
+set_include_path(get_include_path() . PATH_SEPARATOR . 
+__DIR__.'/../library');
+
+
 $config_file="../application/configs/config.ini";
 require_once ("../application/autoload.php");
 
-<<<<<<< HEAD
-$boostrap = new Boostrap($config_file);
-$boostrap->run();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
-$bootstrap = new Bootstrap($config_file);
-$bootstrap->_run();
->>>>>>> 5b6a749b8d203a2be85e014433a62171e6f32b1f
-
+$boostrap = new Bootstrap($config_file);
+$boostrap->_run();
