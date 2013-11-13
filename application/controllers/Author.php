@@ -94,10 +94,10 @@ class Controllers_Author
 		
 		
 		$mail = new Zend_Mail();
-		$mail->addTo('jabrilcru@gmail.com', 'Test');
+		$mail->addTo($user->getEmail(), 'Test');
 		
-		$mail->setSubject('Demonstration - Sending Multiple Mails per SMTP Connection');
-		$mail->setBodyText("Pulsa aqui machote: ".$config['urlActivate']);
+		$mail->setSubject('Activate your account');
+		$mail->setBodyText("Activate your account ".$config['urlActivate']);
 		$mail->send($transport);
 	}
 }
