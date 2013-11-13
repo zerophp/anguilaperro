@@ -1,0 +1,24 @@
+<a href = "/exams">Volver</a>
+<?php 
+echo "<pre>";
+print_r($viewparams['exams']['idexams']);
+echo "</pre>";
+?>
+<form method="post">
+
+
+<div class="controls">
+<input type="hidden" name="id" value="<?=(isset($viewparams['exams']['idexams']))?$viewparams['exams']['idexams']:'';?>"/>
+</div>
+<div class="controls">
+Topic: <input type="text" name="topic" value="<?=(isset($viewparams['exams']['topic']))?$viewparams['exams']['topic']:'';?>"/>
+</div>
+<div class="controls">
+Difficulty: <input type="text" name="difficulty" value="<?=(isset($viewparams['exams']['difficulty']))?$viewparams['exams']['difficulty']:'';?>"/>
+</div>
+<div class="form-actions">
+<input type="submit" class="btn btn-primary" value="Enviar"></input>
+
+</div>
+
+</form>
