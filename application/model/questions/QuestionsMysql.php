@@ -60,8 +60,43 @@ class Model_Questions_QuestionsMysql implements Model_Interfaces_Questions
 		}
 		else
 		{
-						
-			return;
+
+			$sql = "UPDATE questions SET
+					description='".$question['description']."',
+					question_difficulty='".$question['difficulty']."',
+					question_type='".$question['type']."',
+					exam=" . $question['examId'].
+					"WHERE idquestions=".$id;
+					;			
+			mysqli_query($linkWrite, $sql);
+			$questionId = id;
+			
+			foreach ($question["answers"] as $key => $value) {
+				if (!empty($value)) {
+					$isCorrect = 0;
+					$myValue = $value;
+					if ($question["type"] == 3) {
+						$isCorrect = 1;
+						$myValue = $question['answersCorrect'][0];
+					} else if ($question["type"] == 2) {
+						if ($key == $question['answersCorrect'][0]) {
+							$isCorrect = 1;
+						}
+					} else {
+						if (in_array($key,$question['answersCorrect'])) {
+							$isCorrect = 1;
+						}
+					}
+					$sql = "UPDATE answers SET
+						text='" . $myValue . "',
+						is_correct='" . $isCorrect . "'
+						WHERE question=".$questionId." AND idanswers=".$key;					
+					mysqli_query($linkWrite, $sql);
+				}	
+			}
+			return $questionId;						
+
+			
 		}
 	}
 	

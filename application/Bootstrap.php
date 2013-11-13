@@ -23,7 +23,7 @@ class Bootstrap
 		$this->_request();
 		$this->_router();
 		$this->_session();
-		//$this->_smtp();
+		$this->_smtp();
 		$this->_register();
 		$this->_db();
 	}
@@ -36,9 +36,8 @@ class Bootstrap
 		$config['auth']=$this->config['smtp.auth'];
 		$config['username']=$this->config['smtp.username'];
 		$config['password']=$this->config['smtp.password'];
-		
 		$transport = new Zend_Mail_Transport_Smtp($config['server'], $config);
-		
+	
 		
 		// TODO: uncomment to send emails
 		// TODO: remove from bootstrap
