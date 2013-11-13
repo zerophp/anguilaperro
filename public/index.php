@@ -1,6 +1,6 @@
 <?php
 
-// Define application environment- and more staff
+// Define application environment
 defined('APPLICATION_ENV') ||
 define('APPLICATION_ENV',
 		(getenv('APPLICATION_ENV') ?

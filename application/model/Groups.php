@@ -1,9 +1,9 @@
 <?php
 
-class Model_Users
+class Model_Groups
 {
 	public $adapter;
-	protected $model = 'Model_Users_Users';
+	protected $model = 'Model_Groups_Groups';
 	protected $modelInstance;
 	
 	public function __construct()
@@ -13,33 +13,36 @@ class Model_Users
 		$this->modelInstance = new $name();
 	}
 	
-	public function getUsers()
+	public function getGroups()
 	{
 		return $this->modelInstance
-			 ->readUsers();
+			 ->readGroups();
 	}
 	
-	public function getUser($id)
+	
+	public function getGroup($id)
 	{
 		return $this->modelInstance
-		->readUser($id);
+		->readGroup($id);
 	}
 	
-	public function updateUser($user,$id)
+	public function insertGroup($group)
 	{
 		return $this->modelInstance
-		->writeUser($user,$id);
+		->writeGroup($group);
 	}
 	
-	public function insertUser($user)
+	public function updateGroup($group, $id)
 	{
 		return $this->modelInstance
-		->writeUser($user);
+		->writeGroup($group, $id);
 	}
 	
-	public function deleteUser($id)
+	public function deleteGroup($id)
 	{
 		return $this->modelInstance
-		->removeUser($id);
+		->removeGroup($id);
 	}
+	
+	
 }
