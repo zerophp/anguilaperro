@@ -2,10 +2,12 @@
 
 class Model_Users_UsersMysql implements Model_Interfaces_Users
 {
-	
-	
 	private $user;
 	
+	/**
+	 * Method that returns an array with users data
+	 * @return The array with users data
+	*/
 	public function readUsers()
 	{
 		$users=array();
@@ -20,6 +22,13 @@ class Model_Users_UsersMysql implements Model_Interfaces_Users
 		
 		return $users;
 	}
+	
+	/**
+	 * Method that updates the user data if the user exists or inserts the user if $id is null or the user does not exist
+	 * @param $id User identifier or null
+	 * @param $user User data
+	 * @return Returns null if the user has been updated or the new user id if the user has been created
+	*/
 	public function writeUser($user, $id = "")
 	{
 		$linkWrite= $_SESSION['register']['linkWrite'];
@@ -38,10 +47,14 @@ class Model_Users_UsersMysql implements Model_Interfaces_Users
 		}
 		else
 		{
+			//TODO Tener en cuenta el cambio de password
+// 			echo "<pre>";
+// 			print_r($user);
+// 			echo "</pre>";
+// 			die;
 			$sql = "UPDATE users SET
 				email='".$user['email']."',
-				password='".$user['password']."',
-				name='".$user['name']."',				
+				name='".$user['name']."'				
 			WHERE idusers=".$id;
 			
 			mysqli_query($linkWrite, $sql);
@@ -49,16 +62,27 @@ class Model_Users_UsersMysql implements Model_Interfaces_Users
 			return;
 		}
 	}
+	
+	/**
+	 * Method that return the user data
+	 * @param $id User identifier
+	 * @return The user data or null if the user does not exists
+	*/
 	public function readUser($id)
 	{
 		$sql="SELECT * FROM users WHERE idusers=".$id;
 		$linkRead= $_SESSION['register']['linkRead'];
 		$result=mysqli_query($linkRead,$sql);
 		
-		$user=mysqli_fetch_array($result);
+		$user=mysqli_fetch_assoc($result);
 		
 		return $user;
 	}
+	
+	/**
+	 * Method that removes the user data
+	 * @param $id User identifier
+	*/
 	public function removeUser($id)
 	{
 		$sql = "DELETE FROM users WHERE idusers = " . $id;
@@ -67,4 +91,5 @@ class Model_Users_UsersMysql implements Model_Interfaces_Users
 		
 		return;
 	}
+
 }
