@@ -13,6 +13,12 @@
             <li><a href="/index/about">About</a></li>
             <li><a href="/index/contact">Contact</a></li>
           </ul>
+          <ul class="nav navbar-nav navbar-right">
+          	<?php if (isset($_SESSION['user'])){ ?>
+           		<li><a>Hola <?=$_SESSION['user']['name']?></a></li>
+           		<li><a href="/authors/logout">Logout</a></li>
+            <?php }?>
+           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </div><!-- /.navbar -->
