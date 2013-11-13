@@ -40,12 +40,24 @@ class Controllers_Questions
 	
 	public function updateAction($viewparams)
 	{
-		$this->content=renderView($this->request,$viewparams);
+	if ($_POST) {
+			//Update Questions and answers
+			$questions->updateQuestion($this->request['params']['exam'],$this->request['params']['question']);
+			$this->indexAction($viewparams);
+		} else {
+			$viewparams['examID']=$this->request['params']['exam'];		
+			$viewparams['questionID']=$this->request['params']['question'];
+			//Cargar array
+			echo "<pre>";
+			print_r($viewparams);
+			echo "</pre>";
+			$this->content=renderView($this->request,$viewparams);
+		}
 	}
 
 	public function __destruct()
 	{
-		$layoutparams=array('content'=>$this->content);
+		$layoutparams=array('content'=>$this->content, 'request'=>$this->request);
 		echo renderLayout($this->layout, $layoutparams);
 	}
 }

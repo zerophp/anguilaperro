@@ -37,7 +37,7 @@ class Bootstrap
 		$config['username']=$this->config['smtp.username'];
 		$config['password']=$this->config['smtp.password'];
 		
-		$transport = new Zend_Mail_Transport_Smtp($config['server'], $config);
+		//$transport = new Zend_Mail_Transport_Smtp($config['server'], $config);
 		
 		
 		// TODO: uncomment to send emails

@@ -1,19 +1,24 @@
-<a href="/questions/create/exam/<?=$viewparams['examID'];?>" class="btn btn-primary">Crear pregunta</a>
-<br />
-<table class="table table-striped">
+<div id="new_question">
+	<a href="/questions/create/exam/<?=$viewparams['examID'];?>" class="btn btn-primary">+  Crear pregunta</a>
+</div>
+<table class="table table-striped" >
 <tr>
 	<th>Id</th>
 	<th>Description</th>	
 	<th>Difficulty</th>
 	<th>Type</th>	
 	<th>Exam</th>
+	<th>Options</th>	
 </tr>
 <?php foreach($viewparams['questions'] as $key => $question):?>
 	<tr>
-		<?php foreach ($question as $value):?>
+		<?php foreach ($question as $key2=>$value):?>
+			<?php if ($key2=='idquestions') $idq=$value?>
 			<td><?=$value;?></td>
 		<?php endforeach;?>
-
+		<td> <a href="/questions/update/exam/<?=$viewparams['examID'];?>/question/<?=$idq?>" class=" btn btn-mini">Update</a>
+			<a href="/questions/remove/exam/<?=$viewparams['examID'];?>/question/<?=$idq?>" class=" btn btn-mini">Remove</a>
+		</td>
 	</tr>
 <?php endforeach;?>	  
 </table>
