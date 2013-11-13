@@ -1,5 +1,11 @@
+<<<<<<< HEAD
+<h1>Users Delete</h1>
+<form method="post">
+<ul  class="list-unstyled">
+=======
 <form method="post">
 <ul>
+>>>>>>> a417658a40ef11d5c9c2984452133dfbfbccfa71
 	<input type="hidden" name="id" value="<?=(isset($viewparams['users']['idusers']))?$viewparams['users']['idusers']:'';?>"/>
 	<li>
 		Nombre: <?=(isset($viewparams['users']['name']))?$viewparams['users']['name']:'';?>
@@ -8,6 +14,13 @@
 		Seguro que desea borrar el usuario
 	</li>	
 	<li>
+<<<<<<< HEAD
+		<button type="submit" name="borrar" value="Si" class="btn btn-primary">Si</button>
+		<button type="submit" name="borrar" value="No" class="btn btn-primary">No</button>
+	</li>
+	
+</ul>
+=======
 		Si: <input type="submit" name="borrar" value="Si" />
 		No: <input type="submit" name="borrar" value="No" />
 	</li>
@@ -17,4 +30,5 @@
 
 
 
+>>>>>>> a417658a40ef11d5c9c2984452133dfbfbccfa71
 </form>

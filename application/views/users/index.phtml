@@ -1,5 +1,50 @@
 <h1>Users Index</h1>
-<a href = "/users/insert">Insertar</a>
+
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" class="btn btn-primary btn-sm" role="button" data-parent="#accordion" href="#collapseOne">
+          Insertar Usuario
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse">
+      <div class="panel-body">
+      	<form method="post" class="form-horizontal" role="form">
+			<div class="form-group">
+			    <label for="inputname" class="col-sm-2 control-label">Nombre</label>
+			    <div class="col-xs-3">
+			      <input type="text" name="name" value="<?=(isset($viewparams['users']['name']))?$viewparams['users']['name']:'';?>" class="form-control" id="inputname" placeholder="Nombre" >
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="inputemail" class="col-sm-2 control-label">Email</label>
+			    <div class="col-xs-3">
+			      <input type="text" name="email" value="<?=(isset($viewparams['users']['email']))?$viewparams['users']['email']:'';?>" class="form-control" id="inputemail" placeholder="Email" >
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="inputpassword" class="col-sm-2 control-label">Password</label>
+			    <div class="col-xs-3">
+			      <input type="password" name="password" class="form-control" id="inputname" placeholder="Password" >
+			    </div>
+			</div>
+			<div class="form-group">
+			    <div class="col-sm-offset-2 col-xs-3">
+			      <button type="submit" class="btn btn-default">Enviar</button>
+			    </div>
+			</div>
+			<input type="hidden" name="id" value="<?=(isset($viewparams['users']['idusers']))?$viewparams['users']['idusers']:'';?>"/>
+		</form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br /><br />
+
+
 <table class="table table-striped">
 <tr>
   <th>Id</th>
@@ -15,7 +60,9 @@
       <td><?=$value;?></td>
     <?php endforeach;?>
 	<td>
-		<a href="/users/insert/id/<?=$user['idusers'];?>">
+
+		<a href="/users/update/id/<?=$user['idusers'];?>">
+
 			Update
 		</a>
 		&nbsp;

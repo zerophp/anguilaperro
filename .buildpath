@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <buildpath>
 	<buildpathentry kind="src" path=""/>
@@ -12,3 +13,10 @@
 	<buildpathentry kind="src" path=""/>
 </buildpath>
 >>>>>>> 9ea71a74cac253d830780692ccb40b629990dd8c
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<buildpath>
+	<buildpathentry kind="src" path=""/>
+	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
+</buildpath>
+>>>>>>> 4af2a26ab05669943c41e65150012c30166cdd8a

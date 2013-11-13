@@ -15,13 +15,48 @@ class Controllers_Users
 	{
 		$users = new Model_Users();		
 		$viewparams['users']=$users->getUsers();
+		
+		if($_POST){
+			$user = array();
+			$user['name'] = $_POST['name'];
+			$user['email'] = $_POST['email'];
+			$user['password'] = $_POST['password'];
+		
+			$viewparams['users']=$users->insertUser($user);
+		
+			header("Location: /users");
+		}
 		$this->content=renderView($this->request,$viewparams);
 	}
 	
+	public function updateAction(){
+		$request = $this->request;
+		$users = new Model_Users();
+			
+		if($_POST){
+			$user = array();
+			$user['name'] = $_POST['name'];
+			$user['email'] = $_POST['email'];
+			$user['password'] = $_POST['password'];
+			
+			$viewparams['users']=$users->updateUser($user,$_POST['id']);
+			
+			header("Location: /users");
+		}
+		
+		$id = $request['params']['id'];
+		$viewparams['users']=$users->getUser($id);
+		
+		$this->content=renderView($request,$viewparams);
+		
+	}
+			
 	public function __destruct()
 	{
-		$layoutparams=array('content'=>$this->content);
+		$layoutparams=array('content'=>$this->content, 'request'=>$this->request);
 		echo renderLayout('backend', $layoutparams);
+		
+		
 	}
 	
 	public function insertAction(){
@@ -61,5 +96,6 @@ class Controllers_Users
 		}
 		$this->content=renderView($this->request,$viewparams);
 	}
+
 
 }

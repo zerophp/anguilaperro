@@ -38,7 +38,7 @@ class Controllers_Groups
 	
 	public function __destruct()
 	{
-		$layoutparams=array('content'=>$this->content);
+		$layoutparams=array('content'=>$this->content, 'request'=>$this->request);
 		echo renderLayout('backend', $layoutparams);
 	}	
 }

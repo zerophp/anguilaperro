@@ -6,6 +6,10 @@ define('APPLICATION_ENV',
 		(getenv('APPLICATION_ENV') ?
 				getenv('APPLICATION_ENV') : 'production'));
 
+set_include_path(get_include_path() . PATH_SEPARATOR . 
+__DIR__.'/../library');
+
+
 $config_file="../application/configs/config.ini";
 require_once ("../application/autoload.php");
 

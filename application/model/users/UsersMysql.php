@@ -54,6 +54,10 @@ class Model_Users_UsersMysql implements Model_Interfaces_Users
 // 			die;
 			$sql = "UPDATE users SET
 				email='".$user['email']."',
+<<<<<<< HEAD
+				password='".$user['password']."',
+=======
+>>>>>>> a417658a40ef11d5c9c2984452133dfbfbccfa71
 				name='".$user['name']."'				
 			WHERE idusers=".$id;
 			
