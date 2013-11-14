@@ -1,0 +1,58 @@
+<form method="post">
+<fieldset>
+	<legend>Responder Pregunta <?=$viewparams['nav']['index']?>/<?=$viewparams['nav']['total']?></legend>
+	<div id="cajapreg">
+		<label class="control-label" for="description">Texto de la pregunta</label>
+		<div id="texto" class="controls" >
+			<textarea name="description" id="description" rows="30" style="width:100%" readonly> <?=(isset($viewparams['question']['description']))?$viewparams['question']['description']:'';?></textarea>
+		</div>
+	</div>
+
+	<div id="options">
+	
+
+		<div class="control-group">
+
+			<?php foreach($viewparams['answers'] as $key =>$value):?>
+				<div class="controls">
+					<?php if($viewparams['question']['question_type']==1):?>
+						<input type="radio" id="answ_<?=$value['idanswers'];?>" name="answ1" value="<?= $key+1;?>"> <?=(isset($value['text']))?trim($value['text']):'';?>
+					<?php elseif($viewparams['question']['question_type']==2):?>						
+						<input type="checkbox" id="answ_<?=$value['idanswers'];?>" name="answ_<?= $key+1;?>" /> <?=(isset($value['text']))?trim($value['text']):'';?>
+					<?php endif;?> 						
+				</div>
+			<?php endforeach;?>	  
+		
+		
+			
+			<br/><br/><br/><br/><br/><br/><br/>
+			<?php if($viewparams['question']['question_type']==3):?>			
+				<label class="control-label" for="rightansw">Respuesta Correcta</label>
+				<div>
+					<input type="text" name="rightansw" placeholder="Introduzca aquí la respuesta" class="answ" value="<?=(isset($viewparams['right']))?$viewparams['right']:'';?>">
+				</div>
+			<?php endif;?>			
+
+			<div class="form-actions">
+				<input type="hidden" name="idexam" value="<?=$viewparams['question']['exam']?>"></input>			
+				<input type="hidden" name="idquestion" value="<?=$viewparams['nav']['current']?>"></input>
+				<input type="hidden" name="question_type" value="<?=$viewparams['question']['question_type']?>"></input>
+				<input type="submit" class="btn btn-primary" value="Guardar"></input>
+				<input type="checkbox" name="revisar"> Revisar pregunta</input><br/><br/>
+							
+				<?php if(isset($viewparams['nav']['prior'])):?>
+					<a href="/doexam/answer/question/<?=$viewparams['nav']['prior']?>" class="btn btn-danger"><<< Anterior</a>
+				<?php endif;?>
+				<?php if(isset($viewparams['nav']['next'])):?>
+					<a href="/doexam/answer/question/<?=$viewparams['nav']['next']?>" class="btn btn-danger">Siguiente >>></a>
+				<?php endif;?>									
+			</div>
+
+		</div>
+	</div>
+
+
+</fieldset>
+</form>
+
+

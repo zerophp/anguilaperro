@@ -40,21 +40,29 @@ class Controllers_Questions
 	
 	public function updateAction($viewparams)
 	{
-
+	$questions = new Model_Questions();
 	if ($_POST) {
 			//Update Questions and answers
 			$questions->updateQuestion($this->request['params']['exam'],$this->request['params']['question']);
 			$this->indexAction($viewparams);
+			
 		} else {
 			$viewparams['examID']=$this->request['params']['exam'];		
 			$viewparams['questionID']=$this->request['params']['question'];
-			//Cargar array
-			echo "<pre>";
-			print_r($viewparams);
-			echo "</pre>";
+			$viewparams['question']=$questions->readQuestion($this->request['params']['question']);
+			$viewparams['answers']=$questions->readAnswers($this->request['params']['question']);
+			
+			
+				
+			//Get the right answers
+			foreach ($viewparams['answers'] as $key=>$value){
+				if($value['is_correct']==1)
+					$right[]=$key + 1;
+			}
+			$viewparams['right']=implode(',', $right);
+ 
 			$this->content=renderView($this->request,$viewparams);
 		}
-
 	}
 
 	public function __destruct()

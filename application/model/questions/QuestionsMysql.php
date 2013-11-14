@@ -6,18 +6,48 @@ class Model_Questions_QuestionsMysql implements Model_Interfaces_Questions
 	public function readQuestions($examId)
 	{
 		$questions=array();
-		$sql="SELECT * FROM questions WHERE exam=" . $examId;
-		
+		$sql="SELECT * FROM questions WHERE exam=" . $examId." order by idquestions";
+	
 		$linkRead= $_SESSION['register']['linkRead'];
 		$result=mysqli_query($linkRead,$sql);
-		
+	
 		while($row = mysqli_fetch_assoc($result))
 		{
 			$questions[]=$row;
 		}
-		
+	
 		return $questions;
 	}
+	
+	public function readQuestion($questionId)
+	{
+		$question=array();
+		$sql="SELECT * FROM questions WHERE idquestions=" . $questionId;
+	
+		$linkRead= $_SESSION['register']['linkRead'];
+		$result=mysqli_query($linkRead,$sql);
+		$question = mysqli_fetch_assoc($result);
+		
+		return $question;
+	}
+	
+	public function readAnswers($questionId)
+	{
+		$answers=array();
+		$sql="SELECT * FROM answers WHERE question=" . $questionId." ORDER BY idanswers";
+	
+		$linkRead= $_SESSION['register']['linkRead'];
+		$result=mysqli_query($linkRead,$sql);
+	
+		while($row = mysqli_fetch_assoc($result))
+		{
+			$answers[]=$row;
+		}
+	
+		return $answers;
+	}
+	
+		
 	
 	public function writeQuestion($id, $question)
 	{
@@ -66,11 +96,13 @@ class Model_Questions_QuestionsMysql implements Model_Interfaces_Questions
 					question_difficulty='".$question['difficulty']."',
 					question_type='".$question['type']."',
 					exam=" . $question['examId'].
-					"WHERE idquestions=".$id;
-					;			
+					" WHERE idquestions=".$id;
+							
 			mysqli_query($linkWrite, $sql);
-			$questionId = id;
+			$questionId = $id;
+
 			
+				
 			foreach ($question["answers"] as $key => $value) {
 				if (!empty($value)) {
 					$isCorrect = 0;
@@ -89,14 +121,14 @@ class Model_Questions_QuestionsMysql implements Model_Interfaces_Questions
 					}
 					$sql = "UPDATE answers SET
 						text='" . $myValue . "',
-						is_correct='" . $isCorrect . "'
+						is_correct=" . $isCorrect . "
 						WHERE question=".$questionId." AND idanswers=".$key;					
 					mysqli_query($linkWrite, $sql);
+					
 				}	
 			}
 			return $questionId;						
-
-			
+			return;
 		}
 	}
 	
