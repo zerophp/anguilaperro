@@ -23,14 +23,68 @@ class Controllers_Author
 
 	public function loginAction($viewparams)
 	{
+		
+		$request = $this->request;
+		$authors = new Model_Authors();
+			
+		if($_POST){
+			
+			$author=$authors->login($_POST['email'],$_POST['password']);
+			
+			if (is_null($author)){
+				$viewparams['message'] = "Error de autenticación";
+			}else{
+
+				$_SESSION['user'] = $author; 
+
+				header("Location: /backend");
+			}
+		
+		}else{
+
+			$viewparams = array();
+			
+		}
+		
 		$this->content=renderView($this->request,$viewparams);
+		
+		
 	}
 	
-	public function logoutAction($viewparams)
+	
+	public function logoutAction()
 	{
-		$this->content=renderView($this->request,$viewparams);
+		unset($_SESSION['user']);
+		header("Location: /index");
 	}
 	
+	public function verifyAction()
+	{
+		foreach($this->request['params'] as $key => $value)
+		{
+			$email = $key;
+			$token = $value;
+		}
+		$users = new Model_Users();
+		$result = $users->verifyUser($email,$token);
+		
+		if(count($result)==0)
+		header("Location: /author/register");
+		
+		if(($this->time - $result->timestamp)>$this->timeout)
+		{
+			//deleteUser
+			$users->deleteUser($result->idusers);
+			header("Location: /author/register");
+		}
+		else
+		{
+			//update token and this things
+			//TODO Well done with an associative array
+			header("Location: /backend");
+		}
+	}
+					
 	public function registerAction()
 	{
 		$viewparams=array();
@@ -112,7 +166,7 @@ class Controllers_Author
 
 	public function __destruct()
 	{
-		$layoutparams=array('content'=>$this->content);
+		$layoutparams=array('content'=>$this->content, 'request'=>$this->request);
 		echo renderLayout('login', $layoutparams);
 	}
 	
