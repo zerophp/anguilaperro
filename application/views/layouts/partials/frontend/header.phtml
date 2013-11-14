@@ -1,8 +1,8 @@
 <div class="header">
 	<ul class="nav nav-pills pull-right">
-		<li class="active"><a href="/">Home</a></li>
-		<li><a href="/index/about">About</a></li>
-		<li><a href="/index/contact">Contact</a></li>
+		<li class="active"><a href="/"><?=$_SESSION['register']['translate']->_("Home"); ?></a></li>
+		<li><a href="/index/about"><?=$_SESSION['register']['translate']->_("About"); ?></a></li>
+		<li><a href="/index/contact"><?=$_SESSION['register']['translate']->_("Contact"); ?></a></li>
 		<?php if (isset($_SESSION['user'])){ ?>
            		<li><a class="label label-success">Hola <?=$_SESSION['user']['name']?></a></li>
            		<li><a class="label label-success" href="/author/logout">Logout</a></li>
@@ -11,5 +11,5 @@
 			<li><a href="/author/register">Register</a></li>
 		<?php }?>
 	</ul>
-	<h3 class="text-muted">AnguilaPerro</h3>
+	<h3 class="text-muted"><?=$_SESSION['register']['translate']->_("Anguila Perro Application"); ?></h3>
 </div>
