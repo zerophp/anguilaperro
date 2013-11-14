@@ -1,10 +1,10 @@
 <form method="post">
 <fieldset>
-	<legend>Insertar Pregunta</legend>
+	<legend>Actualizar Pregunta</legend>
 	<div id="cajapreg">
 		<label class="control-label" for="description">Texto de la pregunta</label>
 		<div id="texto" class="controls" >
-			<textarea name="description" id="description" rows="30" style="width:100%" ></textarea>
+			<textarea name="description" id="description" rows="30" style="width:100%"> <?=(isset($viewparams['question']['description']))?$viewparams['question']['description']:'';?></textarea>
 		</div>
 	</div>
 
@@ -12,45 +12,34 @@
 		<div id="selections">
 			<label class="control-label" for="type">Tipo de Pregunta</label>
 			<select name="type">
-				<option value="1">Unica</option>
-				<option value="2">Multiple</option>
-				<option value="3">Texto</option>
+				<option value="1" <?=($viewparams['question']['question_type']==1)?'selected':'';?>>Unica</option>
+				<option value="2" <?=($viewparams['question']['question_type']==2)?'selected':'';?>>Multiple</option>
+				<option value="3" <?=($viewparams['question']['question_type']==3)?'selected':'';?>>Texto</option>
 			</select>
 		 
 			<label class="control-label" for="dificultad">Dificultad</label>
 			<select name="difficulty">
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
+				<option value="1" <?=($viewparams['question']['question_difficulty']==1)?'selected':'';?>>1</option>
+				<option value="2" <?=($viewparams['question']['question_difficulty']==2)?'selected':'';?>>2</option>
+				<option value="3" <?=($viewparams['question']['question_difficulty']==3)?'selected':'';?>>3</option>
 			</select>
 		</div>
 
 		<div class="control-group">
 
-			<div class="controls">
-				<label class="control-label" for="answ1">Respuesta1</label>	
-				<input type="text" id="answ1" name="answ1" placeholder="Respuesta1" class="answ"/>
-			</div>
-			<div class="controls">
-				<label class="control-label" for="answ2">Respuesta2</label>	
-				<input type="text" name="answ2" placeholder="Respuesta2" class="answ"/>
-			</div>
-			<div class="controls">
-				<label class="control-label" for="answ3">Respuesta3</label>	
-				<input type="text" name="answ3" placeholder="Respuesta3" class="answ"/>
-			</div>
-			<div class="controls">
-				<label class="control-label" for="answ4">Respuesta4</label>	
-				<input type="text" name="answ4" placeholder="Respuesta4" class="answ"/>
-			</div>
-			<div class="controls">
-				<label class="control-label" for="answ5">Respuesta5</label>	
-				<input type="text" name="answ5" placeholder="Respuesta5" class="answ"/>
-			</div>
+			<?php foreach($viewparams['answers'] as $key =>$value):?>
+				<div class="controls">
+					<label class="control-label" for="answ_<?= $value['idanswers'];?>">Respuesta<?=$key + 1;?></label>	
+					<input type="text" id="answ_<?= $value['idanswers'];?>" name="answ_<?=$value['idanswers'];?>" placeholder="Respuesta<?= $key+1;?>" class="answ" value="<?=(isset($value['text']))?$value['text']:'';?>"/>
+				</div>
+			<?php endforeach;?>	  
+		
+		
+			
 			<br/><br/><br/><br/><br/><br/><br/>
 			<label class="control-label" for="rightansw">Respuesta Correcta</label>
 			<div >
-				<input type="text" name="rightansw" placeholder="Valores separados por comas" class="answ">
+				<input type="text" name="rightansw" placeholder="Valores separados por comas" class="answ" value="<?=(isset($viewparams['right']))?$viewparams['right']:'';?>">
 			</div>
 
 			<div class="form-actions">
