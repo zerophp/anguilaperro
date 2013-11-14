@@ -23,32 +23,39 @@ class Controllers_Author
 
 	public function loginAction($viewparams)
 	{
-		
+		$viewparams = array();
 		$request = $this->request;
 		$authors = new Model_Authors();
-			
-		if($_POST){
-			
-			$author=$authors->login($_POST['email'],$_POST['password']);
-			
-			if (is_null($author)){
-				$viewparams['message'] = "Error de autenticación";
-			}else{
 
-				$_SESSION['user'] = $author; 
-
-				header("Location: /backend");
-			}
+		$recaptcha = new Zend_Service_ReCaptcha($_SESSION['register']['key.public'],
+												$_SESSION['register']['key.private']);
+		$viewparams['captcha']=$recaptcha->getHTML();
 		
-		}else{
-
-			$viewparams = array();
-			
+		if($_POST)
+		{
+			$result = $recaptcha->verify(
+					$_POST['recaptcha_challenge_field'],
+					$_POST['recaptcha_response_field']
+			);
+			if (!$result->isValid()) {
+				$viewparams['message'] = "Captcha Fail!!!";				
+			}
+			else
+			{
+				$author=$authors->login($_POST['email'],$_POST['password']);
+				if (is_null($author))
+				{
+					$viewparams['message'] = "Error de autenticaciÃ³n";
+				}
+				else
+				{
+					$_SESSION['user'] = $author; 
+					header("Location: /backend");
+				}
+			}
 		}
 		
 		$this->content=renderView($this->request,$viewparams);
-		
-		
 	}
 	
 	
@@ -81,9 +88,6 @@ class Controllers_Author
 		{
 			//update token and this things
 			//TODO Well done with an associative array
-			$authors = new Model_Authors();
-			$author=$authors->login($result->email,$result->password);
-			$_SESSION['user'] = $author;
 			header("Location: /backend");
 		}
 	}
