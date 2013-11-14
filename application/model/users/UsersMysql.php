@@ -103,10 +103,9 @@ class Model_Users_UsersMysql implements Model_Interfaces_Users
 	}
 	
 	public function verifyUser($email,$token){
-		$sql = "SELECT timestamp, idusers FROM users WHERE email = '".$email."' AND token = '".$token."'";
+		$sql = "SELECT timestamp, idusers, email, password FROM users WHERE email = '".$email."' AND token = '".$token."'";
 		$linkRead= $_SESSION['register']['linkRead'];
 		$result=mysqli_query($linkRead,$sql);
-		echo $sql;
 		return mysqli_fetch_object($result);
 	}
 
