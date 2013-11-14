@@ -81,6 +81,9 @@ class Controllers_Author
 		{
 			//update token and this things
 			//TODO Well done with an associative array
+			$authors = new Model_Authors();
+			$author=$authors->login($result->email,$result->password);
+			$_SESSION['user'] = $author;
 			header("Location: /backend");
 		}
 	}

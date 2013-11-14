@@ -9,7 +9,7 @@ class Controllers_Backend
 	public function __construct($request)
 	{
 		if (!isset($_SESSION['user']))
-			header("Location: /authors/login");
+			header("Location: /author/login");
 		
 		$this->request=$request;
 		

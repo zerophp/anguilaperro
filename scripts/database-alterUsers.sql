@@ -2,6 +2,8 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
+ALTER SCHEMA `anguilaperro`  DEFAULT CHARACTER SET utf8  DEFAULT COLLATE utf8_general_ci ;
+
 ALTER TABLE `anguilaperro`.`groups` 
 DROP FOREIGN KEY `fk_groups_group_states1`;
 
@@ -16,8 +18,10 @@ DROP INDEX `fk_groups_group_states1_idx` ;
 
 ALTER TABLE `anguilaperro`.`users` 
 DROP COLUMN `user_state`,
-CHANGE COLUMN `timestamp` `timestamp` VARCHAR(255) NULL DEFAULT NULL ,
 ADD COLUMN `user_state` INT(11) NOT NULL AFTER `name`,
+ADD COLUMN `token` VARCHAR(255) NULL DEFAULT NULL AFTER `user_state`,
+ADD COLUMN `timestamp` VARCHAR(255) NULL DEFAULT NULL AFTER `token`,
+ADD COLUMN `display_name` VARCHAR(255) NOT NULL AFTER `timestamp`,
 ADD INDEX `fk_users_user_states1_idx` (`user_state` ASC),
 DROP INDEX `fk_users_user_states1_idx` ;
 
@@ -86,6 +90,8 @@ ADD COLUMN `iduser_state` INT(11) NOT NULL AUTO_INCREMENT FIRST,
 ADD COLUMN `state` VARCHAR(255) NOT NULL AFTER `iduser_state`,
 DROP PRIMARY KEY,
 ADD PRIMARY KEY (`iduser_state`);
+
+DROP TABLE IF EXISTS `anguilaperro`.`exam_done` ;
 
 ALTER TABLE `anguilaperro`.`groups` 
 ADD CONSTRAINT `fk_groups_group_states1`
