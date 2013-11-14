@@ -98,7 +98,6 @@ class Model_Questions_QuestionsMysql implements Model_Interfaces_Questions
 
 			
 		}
-	}
-	
+	}	
 
 }
