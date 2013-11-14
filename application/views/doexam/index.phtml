@@ -1,0 +1,31 @@
+<table class="table table-striped">
+<tr>
+	<th>Grupo</th>
+	<th>Tematica</th>	
+	<th>F.Inicio</th>
+	<th>F.Final</th>
+	<th>Nota</th>
+	<th>Estado</th>
+</tr>
+<?php foreach($viewparams['exams'] as $id => $exam):?>
+	<tr>
+		<td><?= $exam['id_curso']; ?></td>
+		<td><?= $exam['topic']; ?></td>
+		<td><?= $exam['ini_date']; ?></td>
+		<td><?= $exam['end_date']; ?></td>
+		<td><?= $exam['mark']; ?></td>
+		<td>
+		<?php switch ($exam['state']): 
+		    case 1: ?>
+			<a href="/doexam/startExam/exam/<?=$exam['idexams'];?>" >Realizar examen</a>
+		<?php break;?>
+	    <?php case 2: ?>
+	    	Realizado
+	    <?php break;?>
+	    <?php default:?>
+	    	Cerrado
+		<?php endswitch; ?>
+		</td>
+	</tr>
+<?php endforeach;?>	  
+</table>
