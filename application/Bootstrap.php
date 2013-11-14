@@ -26,6 +26,7 @@ class Bootstrap
                 $this->_smtp();
                 $this->_register();
                 $this->_db();
+                $this->changeLanguage($this->config['language']);
         }
         
         protected function _smtp()
@@ -123,5 +124,18 @@ class Bootstrap
          */
         public function getLinkWrite() {
                 return $this->linkWrite;
+        }
+        
+        public function changeLanguage($language){
+
+        	$translate = new Zend_Translate(
+        			array(
+        					'adapter' => 'gettext',
+        					'content' => '../application/languages/'.$language.'.mo',
+        					'locale'  => $language
+        			)
+        	);
+        	$this->setRegisterVar('translate', $translate);
+        
         }
 }

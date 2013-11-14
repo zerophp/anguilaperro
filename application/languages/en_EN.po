@@ -11,13 +11,19 @@ msgstr ""
 "X-Generator: Poedit 1.5.7\n"
 
 msgid "Anguila Perro Application"
-msgstr "Anguila Perro Application"
+msgstr "Anguila Perro"
 
 msgid "Home"
-msgstr "Inicio"
+msgstr "Home"
 
 msgid "All rights reserved."
 msgstr "All rights reserved."
 
 msgid "Exception"
-msgstr "Excepción"
+msgstr "Exception"
+
+msgid "About"
+msgstr "About"
+
+msgid "Contact"
+msgstr "Contact"
