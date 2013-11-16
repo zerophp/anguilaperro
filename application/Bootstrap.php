@@ -13,7 +13,7 @@ class Bootstrap
         public function __construct($config_file)
         {                
                 
-                require_once ("/Model/generalModel.php");
+                require_once ("model/generalModel.php");
                 $this->config=readConfigFile($config_file, APPLICATION_ENV);                        
                 $this->_configApp();
         }

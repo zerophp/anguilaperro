@@ -3,7 +3,18 @@
 
 function __autoload($class)
 {
-	$ruta = __DIR__;
-	set_include_path(get_include_path() . PATH_SEPARATOR . $ruta);
-	include(str_replace('_', '/', $class).".php");	
+	$parts = explode('_', $class);
+		
+	foreach($parts as $key => $value)
+	{		
+		if($value=='Controllers')
+			$value="controllers";
+		else if($value=='Model')
+			$value='model';
+		else 
+			$value=ucfirst($value);
+		$parts[$key]=$value;
+	}	
+	$parts = implode('/',$parts);
+	include_once($parts.".php");	
 }

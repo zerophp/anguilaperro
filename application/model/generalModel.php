@@ -75,7 +75,7 @@ function getRequest()
 function renderView($request,$viewparams)
 {
 	ob_start();
-	include ("../application/views/".$request['controller']."/".
+	include ($_SERVER['DOCUMENT_ROOT']."/../application/views/".$request['controller']."/".
 						$request['action'].".phtml");
 	$html=ob_get_contents();
 	ob_end_clean();
@@ -88,7 +88,7 @@ function renderLayout($layout,$layoutparams)
 {
 	$content=$layoutparams['content'];
 	ob_start();
-		include("/../application/views/layouts/".$layout.".phtml");
+		include($_SERVER['DOCUMENT_ROOT']."/../application/views/layouts/".$layout.".phtml");
 		$html=ob_get_contents();
 	ob_end_clean();
 	
