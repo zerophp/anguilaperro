@@ -13,7 +13,7 @@ class Controllers_Author
 	public function __construct($request)
 	{
 		$this->request=$request;
-		require_once ("/Model/generalModel.php");
+		require_once ($_SERVER['DOCUMENT_ROOT']."/../application/model/generalModel.php");
 		$config_file="../application/configs/config.ini";
 		$this->config=readConfigFile($config_file, APPLICATION_ENV);
 		$this->seed = $this->config['verify.signature'];
