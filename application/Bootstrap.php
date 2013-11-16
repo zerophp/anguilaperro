@@ -74,6 +74,9 @@ class Bootstrap
         {
                 $_SESSION['register']=array();
                 $_SESSION['register']['adapter']=$this->config['adapter'];
+                $_SESSION['register']['key.public']=$this->config['key.public'];
+                $_SESSION['register']['key.private']=$this->config['key.private'];
+                
         }
         
         

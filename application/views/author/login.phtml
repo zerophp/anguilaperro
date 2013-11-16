@@ -1,7 +1,12 @@
-<form class="form-signin">
+<?php if (isset($viewparams['message'])): ?>
+	<div class="alert alert-danger"><?=$viewparams['message'];?></div>
+<?php endif;?>
+
+<form class="form-signin" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" class="form-control" placeholder="Email address" required autofocus>
-        <input type="password" class="form-control" placeholder="Password" required>
+        <input type="text" name="email" class="form-control" placeholder="Email address" required autofocus>
+        <input type="password" name="password" class="form-control" placeholder="Password" required>
+        <?=(isset($viewparams['captcha']))?$viewparams['captcha']:'ss';?>
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>

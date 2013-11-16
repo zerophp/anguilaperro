@@ -8,7 +8,11 @@ class Controllers_Backend
 
 	public function __construct($request)
 	{
+		if (!isset($_SESSION['user']))
+			header("Location: /author/login");
+		
 		$this->request=$request;
+		
 	}
 
 	public function indexAction($viewparams)
